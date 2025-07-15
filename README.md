@@ -30,13 +30,13 @@
 
 - `org.gnome.desktop.interface`
   - `text-scaling-factor`
-    - `1.00` <-> `1.75`
+    - `1.00` <-> **`1.75`**
 - `org.gnome.shell.extensions.dash-to-dock`
   - `dash-max-icon-size`
-    - `20` <-> `48`
+    - `20` <-> **`48`**
 - `set org.gnome.desktop.peripherals.mouse`
   - `speed`
-    - `-0.5` <-> `0.0`
+    - `-0.5` <-> **`0.0`**
 
 필요에 따라 다른 값들도 찾아서 스크립트 내 환경 변수로 추가하여 개조할 수 있을듯?  
 
