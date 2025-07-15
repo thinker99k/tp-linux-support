@@ -1,6 +1,11 @@
 # tp_linux_support
 
-환경 : Ubuntu 24 LTS
+내가 쓰려고 만듦
+
+환경
+- Ubuntu 24 LTS
+- Gnome3
+- ThinkPad T Series
 
 ### [dock_support](https://github.com/thinker99k/tp_linux_support/blob/main/dock_support/README.md)
 도킹 연결 여부에 따라 gsetting 설정
