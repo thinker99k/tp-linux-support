@@ -7,8 +7,8 @@
 - Gnome 3
 - ThinkPad T Series
 
-### [dock_support](https://github.com/thinker99k/tp_linux_support/blob/main/dock_support/README.md)
+### [dock_support](https://github.com/thinker99k/tp_linux_support/tree/main/dock_support)
 도킹 연결 여부에 따라 gsetting 설정
 
-### [power_support](https://github.com/thinker99k/tp_linux_support/blob/main/power_support/README.md)
+### [power_support](https://github.com/thinker99k/tp_linux_support/tree/main/dock_support)
 충전기 연결 여부에 따라 전원모드 설정
