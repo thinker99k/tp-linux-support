@@ -62,4 +62,4 @@ systemctl --user daemon-reload
 systemctl --user start docksupport.service
 ```
 ---
-xorg든 wayland든 쓰레기같음
+xorg든 wayland든 쓰레기임
