@@ -2,9 +2,17 @@
 
 ### 조작하는 값
 
-배터리 사용 <-> 충전기 연결
+배터리 사용
 - `powercfg set`
-  - `power-saver` <-> `performance`
+  - `power-saver` == `power-saver` (유지)
+  - `balanced` == `balanced` (유지)
+  - `performance` -> `power-saver`
+
+충전기 연결
+- `powercfg set`
+  - `power-saver` -> `performance`
+  - `balanced` -> `performance`
+  - `performance` == `performance` (유지)
 
 ### 사용법
 1. docksupport 파일을 적당한 곳에 저장, chmod +x

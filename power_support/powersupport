@@ -2,21 +2,28 @@
 
 PROFILE_ON_CHARGER="performance"
 PROFILE_ON_BATTERY="power-saver"
-PREV_STATE=""
+PROFILE_ON_BATTERY_IGNORE="balanced"
 
 BATTERY_PATH=$(upower -e | grep 'battery_BAT')
 
+powerprofilesctl set "$PROFILE_ON_CHARGER" # 서비스 로딩 전까지 3단계
+
 while true; do
   STATE=$(upower -i "$BATTERY_PATH" | grep -Po '^ *state:\s*\K\w+')
+  PMODE=$(powerprofilesctl get)
 
-  if [ "$STATE" != "$PREV_STATE" ]; then
-    if [ "$STATE" = "discharging" ]; then
-      powerprofilesctl set "$PROFILE_ON_BATTERY"
-    else
-      powerprofilesctl set "$PROFILE_ON_CHARGER"
+  if [ "$STATE" = "discharging" ]; then # 충전기 x
+    if [ "$PMODE" != "$PROFILE_ON_BATTERY_IGNORE" ]; then # 2단계가 아니라면 (2단계 무시)
+      if [ "$PMODE" != "$PROFILE_ON_BATTERY" ]; then # 1단계가 아니라면
+        powerprofilesctl set "$PROFILE_ON_BATTERY" # 1단계로
+      fi
     fi
-    PREV_STATE="$STATE"
+  else # 충전기 o
+    if [ "$PMODE" != "$PROFILE_ON_CHARGER" ]; then # 3단계가 아니라면
+      powerprofilesctl set "$PROFILE_ON_CHARGER" # 3단계로
+    fi
   fi
 
+  PREV_STATE="$STATE"
   sleep 1
 done

@@ -11,29 +11,41 @@ DOCK_SIZE_DOCKED=48
 MOUSE_SPEED_UNDOCKED=-0.5
 MOUSE_SPEED_DOCKED=0.0
 
-PREV_DOCKED=false
+PREV_DOCKED=
+
+undocked() {
+  gsettings set org.gnome.desktop.interface \
+  text-scaling-factor "$FONT_SCALE_UNDOCKED"
+  gsettings set org.gnome.shell.extensions.dash-to-dock \
+  dash-max-icon-size "$DOCK_SIZE_UNDOCKED"
+  gsettings set org.gnome.desktop.peripherals.mouse \
+  speed "$MOUSE_SPEED_UNDOCKED"
+}
+
+docked() {
+  gsettings set org.gnome.desktop.interface \
+  text-scaling-factor "$FONT_SCALE_DOCKED"
+  gsettings set org.gnome.shell.extensions.dash-to-dock \
+  dash-max-icon-size "$DOCK_SIZE_DOCKED"
+  gsettings set org.gnome.desktop.peripherals.mouse \
+  speed "$MOUSE_SPEED_DOCKED"
+}
+
+if boltctl | grep -A 10 "$DOCK_NAME" | grep -qE "status:\s*disconnected"; then # 현재 연결 x
+  PREV_DOCKED=true # 과거 연결 o
+else # 현재 연결 o
+  PREV_DOCKED=false # 과거 연결 x
+fi
 
 while true; do
-	if boltctl | grep -A 10 "$DOCK_NAME" | grep -q "status: *disconnected"; then
-    if [ "$PREV_DOCKED" = true ]; then
-      gsettings set org.gnome.desktop.interface \
-			text-scaling-factor "$FONT_SCALE_UNDOCKED"
-			gsettings set org.gnome.shell.extensions.dash-to-dock \
-			dash-max-icon-size "$DOCK_SIZE_UNDOCKED"
-			gsettings set org.gnome.desktop.peripherals.mouse \
-			speed "$MOUSE_SPEED_UNDOCKED"
-
+  if boltctl | grep -A 10 "$DOCK_NAME" | grep -qE "status:\s*disconnected"; then # 현재 연결 x
+    if [ "$PREV_DOCKED" = true ]; then # 과거 연결 o
+      undocked
       PREV_DOCKED=false
     fi
-    else
-    if [ "$PREV_DOCKED" = false ]; then
-      gsettings set org.gnome.desktop.interface \
-      text-scaling-factor "$FONT_SCALE_DOCKED"
-      gsettings set org.gnome.shell.extensions.dash-to-dock \
-      dash-max-icon-size "$DOCK_SIZE_DOCKED"
-      gsettings set org.gnome.desktop.peripherals.mouse \
-      speed "$MOUSE_SPEED_DOCKED"
-
+  else # 현재 연결 o
+    if [ "$PREV_DOCKED" = false ]; then # 과거 연결 x
+      docked
       PREV_DOCKED=true
     fi
   fi
