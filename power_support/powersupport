@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 PROFILE_ON_CHARGER="performance"
 PROFILE_ON_BATTERY="power-saver"

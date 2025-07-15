@@ -1,4 +1,4 @@
-# power_support
+# power-support
 
 ### 조작하는 값
 
@@ -7,7 +7,7 @@
   - `power-saver` <-> `performance`
 
 ### 사용법
-1. docksupport 파일을 적당한 곳에 저장
+1. docksupport 파일을 적당한 곳에 저장, chmod +x
 2. 유저 서비스 등록
 
 ```commandline

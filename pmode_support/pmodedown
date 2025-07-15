@@ -1,0 +1,11 @@
+#!/bin/sh
+
+curr="$(powerprofilesctl get)"
+case "$curr" in
+  power-saver) next="performance" ;;
+  balanced)    next="power-saver" ;;
+  performance) next="balanced" ;;
+esac
+powerprofilesctl set "$next"
+
+notify-send -e "PowerMode" "$next"

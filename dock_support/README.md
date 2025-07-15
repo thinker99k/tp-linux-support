@@ -1,4 +1,4 @@
-# dock_support
+# dock-support
 
 ### 상황
 
@@ -38,7 +38,7 @@
 필요에 따라 다른 값들도 찾아서 스크립트 내 환경 변수로 추가하여 개조할 수 있을듯?  
 
 ### 사용법
-1. docksupport 파일을 적당한 곳에 저장
+1. docksupport 파일을 적당한 곳에 저장, chmod +x
 2. 유저 서비스 등록
 
 ```commandline
@@ -62,4 +62,4 @@ systemctl --user daemon-reload
 systemctl --user start docksupport.service
 ```
 ---
-xorg든 wayland든 쓰레기임
+xorg나 wayland나 쓰레기..
