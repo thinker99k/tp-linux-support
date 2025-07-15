@@ -20,4 +20,4 @@
    - down
      - Command : `pmodedown`
      - Command : `/home/kh/.script/pmodedown`
-     - Shortcut`shift` + `ctrl` + `bs`
+     - Shortcut : `shift` + `ctrl` + `bs`
