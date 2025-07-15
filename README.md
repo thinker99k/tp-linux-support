@@ -1,8 +1,8 @@
 # tp_linux_support
 
-내가 쓰려고 만듦
+불편해서 내가 쓰려고 만듦
 
-환경
+**환경**
 - Ubuntu 24 LTS
 - Gnome3
 - ThinkPad T Series
