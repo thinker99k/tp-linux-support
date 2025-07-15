@@ -10,8 +10,8 @@
 ### [dock-support](https://github.com/thinker99k/tp_linux_support/tree/main/dock_support)
 도킹 연결 여부에 따라 gsetting 설정
 
-### [pmode-support]()
+### [pmode-support](https://github.com/thinker99k/tp_linux_support/tree/main/pmode_support)
 단축키로 수동 전원모드 설정
 
-### [power-support](https://github.com/thinker99k/tp_linux_support/tree/main/dock_support)
+### [power-support](https://github.com/thinker99k/tp_linux_support/tree/main/power_support)
 충전기 연결 여부에 따라 전원모드 설정
