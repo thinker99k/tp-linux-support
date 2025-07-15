@@ -1,0 +1,22 @@
+#!/bin/bash
+
+PROFILE_ON_CHARGER="performance"
+PROFILE_ON_BATTERY="power-saver"
+PREV_STATE=""
+
+BATTERY_PATH=$(upower -e | grep 'battery_BAT')
+
+while true; do
+  STATE=$(upower -i "$BATTERY_PATH" | grep -Po '^ *state:\s*\K\w+')
+
+  if [ "$STATE" != "$PREV_STATE" ]; then
+    if [ "$STATE" = "discharging" ]; then
+      powerprofilesctl set "$PROFILE_ON_BATTERY"
+    else
+      powerprofilesctl set "$PROFILE_ON_CHARGER"
+    fi
+    PREV_STATE="$STATE"
+  fi
+
+  sleep 1
+done
