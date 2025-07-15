@@ -4,7 +4,7 @@
 
 **환경**
 - Ubuntu 24 LTS
-- Gnome3
+- Gnome 3
 - ThinkPad T Series
 
 ### [dock_support](https://github.com/thinker99k/tp_linux_support/blob/main/dock_support/README.md)
