@@ -1,0 +1,42 @@
+#!/bin/bash
+
+DOCK_NAME="ThinkPad Thunderbolt"
+
+FONT_SCALE_UNDOCKED=1.0
+FONT_SCALE_DOCKED=1.75
+
+DOCK_SIZE_UNDOCKED=20
+DOCK_SIZE_DOCKED=48
+
+MOUSE_SPEED_UNDOCKED=-0.5
+MOUSE_SPEED_DOCKED=0.0
+
+PREV_DOCKED=false
+
+while true; do
+	if boltctl | grep -A 10 "$DOCK_NAME" | grep -q "status: *disconnected"; then
+    if [ "$PREV_DOCKED" = true ]; then
+      gsettings set org.gnome.desktop.interface \
+			text-scaling-factor "$FONT_SCALE_UNDOCKED"
+			gsettings set org.gnome.shell.extensions.dash-to-dock \
+			dash-max-icon-size "$DOCK_SIZE_UNDOCKED"
+			gsettings set org.gnome.desktop.peripherals.mouse \
+			speed "$MOUSE_SPEED_UNDOCKED"
+
+      PREV_DOCKED=false
+    fi
+    else
+    if [ "$PREV_DOCKED" = false ]; then
+      gsettings set org.gnome.desktop.interface \
+      text-scaling-factor "$FONT_SCALE_DOCKED"
+      gsettings set org.gnome.shell.extensions.dash-to-dock \
+      dash-max-icon-size "$DOCK_SIZE_DOCKED"
+      gsettings set org.gnome.desktop.peripherals.mouse \
+      speed "$MOUSE_SPEED_DOCKED"
+
+      PREV_DOCKED=true
+    fi
+  fi
+
+  sleep 1
+done
