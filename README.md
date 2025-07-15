@@ -58,7 +58,6 @@ Restart=always
 
 [Install]
 WantedBy=default.target
-
 ```
 3. systemd 재시작 후 서비스 활성화
 ```commandline
